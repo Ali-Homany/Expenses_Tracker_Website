@@ -1,1 +1,2 @@
 # Expenses_Tracker_Website
+track your expenses in a simple local website, that summarizes everything in a pie chart and bar chart, with the ability to search through records and filter charts accordingly
