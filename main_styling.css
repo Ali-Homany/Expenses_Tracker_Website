@@ -126,7 +126,7 @@ canvas {
         display: flex;
         flex-flow: column nowrap;
     }
-    input{
+    input, select{
         width: calc(100% - 40px);
         height: 30px;
         outline: none;
@@ -140,11 +140,14 @@ canvas {
         border-radius: 10px;
         opacity: 1;
     }
-    input::placeholder{
+    select{
+        height: 100%;
+    }
+    input::placeholder, select::placeholder{
         color: #A6A6A6;
         font-family: 'Nixie One', sans-serif;
     }
-    input:focus{
+    input:focus, select:focus{
         outline: 3px solid #1a1c5e;
     }
     .price_row, .date_row{

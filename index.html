@@ -37,6 +37,10 @@
             <input type="text" placeholder="expense title"  required id="title">
             <div class="price_row">
                 <input type="number" placeholder="price" min="1" required id="price">
+                <select required id="currency">
+                    <option value="LL">LL</option>
+                    <option value="$">$</option>
+                </select>
                 <input type="text" placeholder="category" required id="category">
             </div>
             <div class="date_row">
@@ -64,6 +68,7 @@
                     <th>date</th>
                     <th>title</th>
                     <th>price</th>
+                    <th>currency</th>
                     <th>category</th>
                     <th></th>
                 </thead>

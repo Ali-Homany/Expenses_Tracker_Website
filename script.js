@@ -4,6 +4,7 @@ const del = document.getElementById("delete")
 const tbody = document.getElementById("body")
 const title = document.getElementById("title")
 const price = document.getElementById("price")
+const currency = document.getElementById("currency")
 const category = document.getElementById("category")
 const submit = document.getElementById("submit")
 const output = document.querySelector(".output")
@@ -32,6 +33,7 @@ function submitItem (){
         date: year.value + "/" + month.value + "/" + day.value,
         title: title.value.toLowerCase(),
         price:price.value,
+        currency: currency.value.toUpperCase(),
         category:category.value.toLowerCase()
     }
     if(!isDateValid(result.date)){
@@ -153,6 +155,7 @@ function updateRow(id){
 
     title.value = row.title
     price.value = row.price
+    currency.value = row.currency
     category.value = row.category
     
     date = row.date.split('/')
@@ -410,8 +413,21 @@ function importData() {
       reader.onload = (e) => {
         try {
           const data = JSON.parse(e.target.result);
+          // Check if data is a list of dictionaries
+          if (!Array.isArray(data) || !data.every(item => typeof item === 'object')) {
+            alert("Error: Invalid data structure. Please ensure the file contains a list of dictionaries.");
+            return;
+          }
+          // Filter and normalize the data
+          const normalizedData = data.map(item => ({
+            date: item.date || null,
+            title: item.title || null,
+            price: item.price || null,
+            currency: item.currency || "LL",
+            category: item.category || null,
+          }));
           // Set the data to your application logic (e.g., update local storage)
-          localStorage.setItem("data", JSON.stringify(data));
+          localStorage.setItem("data", JSON.stringify(normalizedData));
           alert("Data imported successfully!");
         } catch (error) {
           alert("Error parsing JSON file!");
