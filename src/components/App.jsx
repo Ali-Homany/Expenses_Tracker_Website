@@ -3,12 +3,12 @@ import Hero from './Hero';
 import ExpenseCreator from './ExpenseCreator';
 import SearchBar from './SearchBar';
 import ExpensesList from './ExpensesList';
+import FiltersSideBar from './FiltersSideBar';
 import { importData, downloadData, scroll_to_form } from '../utils/actions';
 
 
 function App() {
     const [ expensesList, setExpensesList ] = useState(JSON.parse(localStorage.getItem('data')) || []);
-    const [ searchQuery, setSearchQuery ] = useState('');
     const [ expenseDraft, setExpenseDraft ] = useState({
         'title': '',
         'price': '',
@@ -17,11 +17,26 @@ function App() {
         'date': new Date().toISOString().split('T')[0]
     });
     const [ isUpdateMode, setIsUpdateMode ] = useState(false);
+    const [ filters, setFilters ] = useState({
+        'title': '',
+        'category': '',
+        'min_price': 0,
+        'max_price': 1000000,
+        'month': null,
+        'year': null
+    })
 
     useEffect(() => {
         localStorage.setItem("data", JSON.stringify(expensesList));
     }, [ expensesList ]);
 
+
+    
+    function setSearchQuery(query) {
+        setFilters((filters) => {
+            return {...filters, 'title': query}
+        })
+    }
     function addExpense(e) {
         e.preventDefault();
         setExpensesList(() => {
@@ -80,13 +95,16 @@ function App() {
                     : <></>
                 }
             </div>
-            { (expensesList.length !== 0) ?
-                <>
-                    <SearchBar searchQuery={ searchQuery } setSearchQuery={ setSearchQuery } />
-                    <ExpensesList expensesList={ expensesList } setExpensesList={ setExpensesList } searchQuery={ searchQuery } activateUpdateMode={ activateUpdateMode }/>
-                </>
-            : <div></div>
-            }
+            <div id='output'>
+                <FiltersSideBar filters={ filters } setFilters={ setFilters } categories={ [...new Set(expensesList.map(expense => expense.category))] }/>
+                { (expensesList.length !== 0) ?
+                    <>
+                        <SearchBar searchQuery={ filters.title } setSearchQuery={ setSearchQuery } />
+                        <ExpensesList expensesList={ expensesList } setExpensesList={ setExpensesList } filters={ filters } activateUpdateMode={ activateUpdateMode }/>
+                    </>
+                : <div></div>
+                }
+            </div>
         </div>
     );
 }

@@ -1,13 +1,29 @@
 import { List, AutoSizer } from 'react-virtualized';
 import ExpenseRow from "../components/ExpenseRow";
 
-export default function ExpensesList({ expensesList, searchQuery, setExpensesList, activateUpdateMode }) {
+export default function ExpensesList({ expensesList, filters, setExpensesList, activateUpdateMode }) {
     function deleteExpense(expenseID) {
         setExpensesList(expensesList.filter(expense => expense.id !== expenseID))
     }
     
+    // filter expenses based on all filters
+    var expenses = expensesList;
+    if (filters.title !== '')
+        expenses = expenses.filter((expense) => expense.title.toLowerCase().includes(filters.title.toLowerCase()));
+    if (filters.category !== '')
+        expenses = expenses.filter((expense) => expense.category.toLowerCase() === filters.category.toLowerCase());
+    if (filters.min_price !== null && filters.min_price > 0)
+        expenses = expenses.filter((expense) => Number(expense.price) >= Number(filters.min_price));
+    if (filters.max_price !== null && filters.max_price > 0)
+        expenses = expenses.filter((expense) => Number(expense.price) <= Number(filters.max_price));
+    if (filters.year !== null && filters.year !== "")
+        expenses = expenses.filter((expense) => Number(expense.date.split('-')[0]) === Number(filters.year));
+    if (filters.month !== null && filters.month !== "")
+        expenses = expenses.filter((expense) => Number(expense.date.split('-')[1]) === Number(filters.month));
+
+
     return (
-        <div className="output">
+        <div className="data">
                 <div className="row header">
                     <div>date</div>
                     <div>title</div>
@@ -21,14 +37,13 @@ export default function ExpensesList({ expensesList, searchQuery, setExpensesLis
                         <List
                             height={600}
                             width={width}
-                            rowCount={ expensesList.length }
+                            rowCount={ expenses.length }
                             rowHeight={ 50 }
                             rowRenderer={ ({ index, style, key, parent }) => {
-                                const expense = expensesList[index];
-                                const result = (expense.title.toLowerCase().includes(searchQuery.toLowerCase())) ? 
+                                const expense = expenses[index];
+                                return (
                                     <ExpenseRow key={ expense.id } style={ style } expense={ expense } editExpense={ activateUpdateMode } deleteExpense={ deleteExpense } />
-                                    : null
-                                return result;
+                                )
                             }}
                         >
                         </List>

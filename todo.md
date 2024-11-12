@@ -1,11 +1,8 @@
 # ToDo:
 ~~- Use react-virtualized for expenses rows~~
-- Improve search by adding filters for:
-    - Category
-    - Year
-    - Month
-    - Minimum Price
-    - Maximum Price
+
+~~- Improve search by adding filters for price, category, date~~
+
 - Add dark theme
 - Create settings page which includes:
     - theme changer

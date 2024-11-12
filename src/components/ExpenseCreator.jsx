@@ -1,7 +1,7 @@
 export default function ExpenseCreator({ expenseDraft, setExpenseDraft, addExpense, isUpdateMode, updateExpense }) {
     return (
         <form onSubmit={ (e) => {if (isUpdateMode) {updateExpense(e)} else addExpense(e) }}>
-            <input type="text" placeholder="expense title"  required id="title" value={ expenseDraft.title } onChange={ (e) => setExpenseDraft({...expenseDraft, title: e.target.value }) }/>
+            <input type="text" placeholder="expense title"  required maxLength={25} id="title" value={ expenseDraft.title } onChange={ (e) => setExpenseDraft({...expenseDraft, title: e.target.value }) }/>
             <div className="price_row">
                 <input type="number" placeholder="price" min="1" required id="price" value={ expenseDraft.price } onChange={ (e) => setExpenseDraft({...expenseDraft, price: e.target.value }) }/>
                 <select required id="currency" value={ expenseDraft.currency } onChange={ (e) => setExpenseDraft({...expenseDraft, currency: e.target.value }) }>

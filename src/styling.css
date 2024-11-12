@@ -89,157 +89,152 @@ body{
 }
 
 
-/* summary section */
-#summary {
+/* form & controls */
+form{
+    padding: 0;
     display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-evenly;
-    margin: 100px 0px;
-    overflow-x: auto; /* Enable horizontal scrolling for the section */
-}  
-canvas {
-    max-width: 600px;
-    height: 400px;
-    overflow: hidden;
+    flex-flow: column nowrap;
 }
-#barChart{
-    min-width: 600px;
-    max-width: none;
-}
-#bar_container {
-    width: 500px; /* Fixed width for the container */
-    overflow-x: scroll; /* Enable horizontal scrolling for the container */
-    white-space: nowrap; /* Prevent line breaks within the container */
-    direction: rtl;
-}
-  
-
-/* crud section */
-.crud{
-    width: 60%;
+form, .controls, .searchBlock, .data {
+    width: fit-content;
+    min-width: 50vw;
     margin: auto;
 }
-    /* form & controls */
-    form{
-        padding: 0;
-        display: flex;
-        flex-flow: column nowrap;
-    }
-    form, .controls, .searchBlock, .output {
-        width: fit-content;
-        min-width: 50vw;
-        margin: auto;
-    }
-    input, select{
-        width: calc(100% - 40px);
-        height: 30px;
-        outline: none;
-        border: none;
-        background-color: #171834;
-        font-family: 'Quicksand', serif;
-        font-size: 24px;
-        color: white;
-        margin: 4px 0px;
-        padding: 10px 20px;
-        border-radius: 10px;
-        opacity: 1;
-    }
-    select{
-        height: 100%;
-    }
-    input::placeholder, select::placeholder{
-        color: #A6A6A6;
-        font-family: 'Nixie One', sans-serif;
-    }
-    input:focus, select:focus{
-        outline: 3px solid #1a1c5e;
-    }
-    .price_row, .date_row{
-        display: flex;
-        justify-content: space-between;
-        gap: 2%;
-    }
-    .date_row{
-        gap: 2%;
-    }
-    button, input[type="submit"]{
-        width: 100%;
-        background-color:#800000;
-        font-size: 24px;
-        font-family: 'Quicksand', serif;
-        font-weight: bold;
-        color: white;
-        cursor: pointer;
-        border: none;
-        border-radius: 40px;
-        padding: 7px 20px;
-        margin: 10px 0px;
-        text-transform: uppercase;
-        opacity: 1;
-        transition: 1s;
-    }
-    button:hover, input[type="submit"]:hover{
-        box-shadow: 0px 0px 10px 3px #da0000;
-        letter-spacing: 1px;
-    }
-    .btnSearch{
-        display: flex;
-        justify-content: space-between;
-        gap: 2%;
-    }
-    #import::before {
-        content: 'import data';
-    }
-    #download::before{
-        content: 'download all data';
-    }
-    #delete::before{
-        content: 'delete all ';
-    }
+input, select{
+    width: calc(100% - 40px);
+    height: 30px;
+    outline: none;
+    border: none;
+    background-color: #171834;
+    font-family: 'Quicksand', serif;
+    font-size: 24px;
+    color: white;
+    margin: 4px 0px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    opacity: 1;
+}
+select{
+    height: 100%;
+}
+input::placeholder, select::placeholder{
+    color: #A6A6A6;
+    font-family: 'Nixie One', sans-serif;
+}
+input:focus, select:focus{
+    outline: 3px solid #1a1c5e;
+}
+.price_row, .date_row{
+    display: flex;
+    justify-content: space-between;
+    gap: 2%;
+}
+.date_row{
+    gap: 2%;
+}
+button, input[type="submit"]{
+    width: 100%;
+    background-color:#800000;
+    font-size: 24px;
+    font-family: 'Quicksand', serif;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 40px;
+    padding: 7px 20px;
+    margin: 10px 0px;
+    text-transform: uppercase;
+    opacity: 1;
+    transition: 1s;
+}
+button:hover, input[type="submit"]:hover{
+    box-shadow: 0px 0px 10px 3px #da0000;
+    letter-spacing: 1px;
+}
+#import::before {
+    content: 'import data';
+}
+#download::before{
+    content: 'download all data';
+}
+#delete::before{
+    content: 'delete all ';
+}
 
-    /* searchBlock */
-    .searchBlock{
-        margin-top: 100px;
-    }
 
-    /* table */
-    .output{
-        width: 60vw;
-        text-align: center;
-        margin-top: 40px;
-    }
-    .row {
-        display: grid;
-        grid-template-columns: 1fr 1.5fr .8fr .5fr 1fr .5fr;
-        border-bottom: 1px dashed #800000;
-    }
-    .row div{
-        width: 100%;
-        text-align: center;
-        padding: 10px 0px;
-        vertical-align: middle;
-        font-size: 18px;
-        font-family: 'Open Sans', sans-serif;
-        text-transform: lowercase;
-    }
-    .row img{
-        width: 20px;
-        aspect-ratio: 1/1;
-        margin-left: 10px;
-        cursor: pointer;
-    }
-    .row div:nth-child(4){
-        text-transform: capitalize;
-    }
-    .row.header {
-        border-bottom: 5px dashed #800000;
-    }
-    .row.header div {
-        font-size: 21px;
-        font-family: 'Open Sans', sans-serif;
-        font-weight: 800;
-        text-transform: uppercase;
-        border-bottom: none;
-        padding-bottom: 10px;
-    }
-    
+
+
+#output {
+    position: relative;
+    width: 100%;
+}
+
+
+/* searchBlock */
+.searchBlock{
+    margin-top: 100px;
+}
+
+
+/* filters */
+.filters-sidebar {
+    position: absolute;
+    left: 50px;
+    top: 100%;
+    width: 12%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.filters-sidebar > * {
+    box-sizing: border-box;
+    width: 100%;
+}
+.filters-sidebar input[type="number"] {
+    padding: 25px 10px;
+}
+
+
+/* table */
+.data{
+    width: 60vw;
+    text-align: center;
+    margin-top: 40px;
+}
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr .8fr .5fr 1fr .5fr;
+    border-bottom: 1px dashed #800000;
+}
+.row div{
+    width: 100%;
+    text-align: center;
+    padding: 10px 0px;
+    vertical-align: middle;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: lowercase;
+}
+.row img{
+    width: 20px;
+    aspect-ratio: 1/1;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.row div:nth-child(4){
+    text-transform: capitalize;
+}
+.row.header {
+    border-bottom: 5px dashed #800000;
+}
+.row.header div {
+    font-size: 21px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-bottom: none;
+    padding-bottom: 10px;
+}
