@@ -3,10 +3,9 @@ Track your expenses using a simple minimalistic website, that summarizes everyth
 
 This is a CRUDS project using DOM local storage, built mainly for usage on desktop, using:
 - [Canva](https://www.canva.com/) for website design
-- HTML
-- Pure CSS
-- Javascript.
-
+- Javascript
+- React JS
+- Vanilla CSS
 
 Note that data is locally saved on your device, it is totally safe to use this website, as no backend is included at all.
 

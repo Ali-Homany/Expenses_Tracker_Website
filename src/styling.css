@@ -126,6 +126,11 @@ canvas {
         display: flex;
         flex-flow: column nowrap;
     }
+    form, .controls, .searchBlock, .output {
+        width: fit-content;
+        min-width: 50vw;
+        margin: auto;
+    }
     input, select{
         width: calc(100% - 40px);
         height: 30px;
@@ -193,12 +198,17 @@ canvas {
         content: 'delete all ';
     }
 
+    /* searchBlock */
+    .searchBlock{
+        margin-top: 100px;
+    }
+
     /* table */
     table{
         width: 100%;
         margin: 10px 0px;
         text-align: center;
-        margin-top: 80px;
+        margin-top: 40px;
     }
     th{
         font-size: 21px;
@@ -216,8 +226,7 @@ canvas {
         border-bottom: 1px dashed #800000;
         text-transform: lowercase;
     }
-    tr svg{
-        fill: white;
+    tr img{
         font-size: 20px;
         margin-left: 10px;
         cursor: pointer;
