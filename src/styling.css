@@ -10,8 +10,7 @@
 body{
     background-color:#5595FF;
     color: white;
-    font-family: 'Quicksand', serif;;
-    padding-bottom: 100px;
+    font-family: 'Quicksand', serif;
 }
 .head{
     color: #171834;
@@ -204,38 +203,43 @@ canvas {
     }
 
     /* table */
-    table{
-        width: 100%;
-        margin: 10px 0px;
+    .output{
+        width: 60vw;
         text-align: center;
         margin-top: 40px;
     }
-    th{
-        font-size: 21px;
-        font-family: 'Open Sans', sans-serif;
-        font-weight: 800;
-        text-transform: uppercase;
-        border-bottom: 5px dashed #800000;
-        padding-bottom: 10px;
+    .row {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr .8fr .5fr 1fr .5fr;
+        border-bottom: 1px dashed #800000;
     }
-    td{
+    .row div{
+        width: 100%;
+        text-align: center;
         padding: 10px 0px;
         vertical-align: middle;
         font-size: 18px;
         font-family: 'Open Sans', sans-serif;
-        border-bottom: 1px dashed #800000;
         text-transform: lowercase;
     }
-    tr img{
-        font-size: 20px;
+    .row img{
+        width: 20px;
+        aspect-ratio: 1/1;
         margin-left: 10px;
         cursor: pointer;
     }
-    tbody tr td:nth-child(4){
-        margin-right: -50px;
+    .row div:nth-child(4){
         text-transform: capitalize;
     }
-    tbody tr td:nth-child(5){
-        width: 80px;
+    .row.header {
+        border-bottom: 5px dashed #800000;
+    }
+    .row.header div {
+        font-size: 21px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 800;
+        text-transform: uppercase;
+        border-bottom: none;
+        padding-bottom: 10px;
     }
     

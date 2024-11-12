@@ -1,5 +1,5 @@
 # ToDo:
-- Use react-virtualized for expenses rows
+~~- Use react-virtualized for expenses rows~~
 - Improve search by adding filters for:
     - Category
     - Year

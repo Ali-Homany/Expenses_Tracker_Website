@@ -1,3 +1,4 @@
+import { List, AutoSizer } from 'react-virtualized';
 import ExpenseRow from "../components/ExpenseRow";
 
 export default function ExpensesList({ expensesList, searchQuery, setExpensesList, activateUpdateMode }) {
@@ -7,25 +8,32 @@ export default function ExpensesList({ expensesList, searchQuery, setExpensesLis
     
     return (
         <div className="output">
-            <table>
-                <thead>
-                    <tr>
-                        <th>date</th>
-                        <th>title</th>
-                        <th>price</th>
-                        <th>currency</th>
-                        <th>category</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody id="body">
-                    { expensesList.map((expense) => 
-                        (expense.title.toLowerCase().includes(searchQuery.toLowerCase())) ? 
-                            <ExpenseRow key={ expense.id } expense={ expense } editExpense={ activateUpdateMode } deleteExpense={ deleteExpense } />
-                        : null
+                <div className="row header">
+                    <div>date</div>
+                    <div>title</div>
+                    <div>price</div>
+                    <div>currency</div>
+                    <div>category</div>
+                    <div></div>
+                </div>
+                <AutoSizer>
+                    {({ width, height }) => (
+                        <List
+                            height={600}
+                            width={width}
+                            rowCount={ expensesList.length }
+                            rowHeight={ 50 }
+                            rowRenderer={ ({ index, style, key, parent }) => {
+                                const expense = expensesList[index];
+                                const result = (expense.title.toLowerCase().includes(searchQuery.toLowerCase())) ? 
+                                    <ExpenseRow key={ expense.id } style={ style } expense={ expense } editExpense={ activateUpdateMode } deleteExpense={ deleteExpense } />
+                                    : null
+                                return result;
+                            }}
+                        >
+                        </List>
                     )}
-                </tbody>
-            </table>
+                </AutoSizer>
         </div>
     )
 }
