@@ -1,0 +1,20 @@
+# ToDo:
+- Use react-virtualized for expenses rows
+- Improve search by adding filters for:
+    - Category
+    - Year
+    - Month
+    - Minimum Price
+    - Maximum Price
+- Add dark theme
+- Create settings page which includes:
+    - theme changer
+    - data import
+    - data export
+- Add formats for export:
+    - csv
+    - excel
+- Add summary:
+    - daily total bar chart
+    - categories pie chart
+    - current month total
