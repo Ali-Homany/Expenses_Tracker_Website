@@ -4,10 +4,8 @@
 ~~- Improve search by adding filters for price, category, date~~
 
 ~~- Add dark theme~~
-- Create settings page which includes:
-    - theme changer
-    - data import
-    - data export
+
+~~- Create settings page which includes:~~
 - Add formats for export:
     - csv
     - excel
