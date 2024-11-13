@@ -3,7 +3,7 @@
 
 ~~- Improve search by adding filters for price, category, date~~
 
-- Add dark theme
+~~- Add dark theme~~
 - Create settings page which includes:
     - theme changer
     - data import

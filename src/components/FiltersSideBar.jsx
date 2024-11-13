@@ -18,8 +18,8 @@ export default function FiltersSideBar({ filters, categories, setFilters }) {
                 }
 
             </select>
-            <input type="number" name="year" id="year" step={1} min={2000} max={2100} onChange={ (e) => setFilters({...filters, 'year': e.target.value}) }/>
-            <input type="number" name="month" id="month" step={1} min={1} max={12} onChange={ (e) => setFilters({...filters, 'month': e.target.value}) }/>
+            <input type="number" placeholder="year" name="year" id="year" step={1} min={2000} max={2100} onChange={ (e) => setFilters({...filters, 'year': e.target.value}) }/>
+            <input type="number" placeholder="month" name="month" id="month" step={1} min={1} max={12} onChange={ (e) => setFilters({...filters, 'month': e.target.value}) }/>
         </div>
     )
 }

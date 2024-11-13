@@ -1,0 +1,14 @@
+:root {
+    --dark-red: #800000;
+    --white: white;
+    --placeholders: #A6A6A6;
+    --blue: #1a1c5e;
+    --light-blue: #5595FF;
+    --dark-blue: #171834;
+}
+.dark-theme {
+    --light-blue: #0a0b35;
+    --dark-blue: #5595FF;
+    --placeholders: #000000dd;
+    --white: #ffffffcc;
+}
