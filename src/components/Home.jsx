@@ -87,6 +87,9 @@ export default function Home({ expensesList, setExpensesList }) {
                         <FiltersSideBar filters={ filters } setFilters={ setFilters } categories={ [...new Set(expensesList.map(expense => expense.category))] }/>
                         <SearchBar searchQuery={ filters.title } setSearchQuery={ setSearchQuery } />
                         <ExpensesList expensesList={ expensesList } setExpensesList={ setExpensesList } filters={ filters } activateUpdateMode={ activateUpdateMode }/>
+                        <Link to="/summary">
+                            <button className='nav-btn' id="summary-btn">Summarize</button>
+                        </Link>
                     </>
                 : <div></div>
                 }

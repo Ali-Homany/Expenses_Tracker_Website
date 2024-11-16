@@ -9,7 +9,4 @@
 
 ~~- Add formats for export~~
 
-- Add summary:
-    - daily total bar chart
-    - categories pie chart
-    - current month total
+~~- Add summary~~

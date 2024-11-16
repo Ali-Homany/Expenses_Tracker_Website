@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import Settings from './Settings';
+import Summary from './Summary';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home expensesList={expensesList} setExpensesList={setExpensesList}/>} />
                     <Route path="/settings" element={<Settings setIsDarkTheme={setIsDarkTheme} nb_expenses={expensesList.length} deleteExpensesList={deleteExpensesList}/>} />
+                    <Route path='/summary' element={<Summary expensesList={expensesList}/>} />
                 </Routes>
             </Router>
         </div>

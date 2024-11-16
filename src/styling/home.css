@@ -160,7 +160,13 @@ button:hover, input[type="submit"]:hover{
     margin-top: 100px;
 }
 
-
+/* summarize btn */
+#summary-btn {
+    position: absolute;
+    right: 50px;
+    top: 100px;
+    width: fit-content;
+}
 /* filters */
 .filters-sidebar {
     position: absolute;
