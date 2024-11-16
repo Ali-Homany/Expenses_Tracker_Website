@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import Settings from './Settings';
 
@@ -17,12 +17,17 @@ function App() {
     }, [isDarkTheme]);
 
 
+    function deleteExpensesList() {
+        if (window.confirm("Are you sure you want to delete all expenses?")) {
+            setExpensesList([]);
+        }
+    }
     return (
         <div className="App" >
             <Router>
                 <Routes>
                     <Route path="/" element={<Home expensesList={expensesList} setExpensesList={setExpensesList}/>} />
-                    <Route path="/settings" element={<Settings setIsDarkTheme={setIsDarkTheme} nb_expenses={expensesList.length} deleteExpensesList={() => setExpensesList([])}/>} />
+                    <Route path="/settings" element={<Settings setIsDarkTheme={setIsDarkTheme} nb_expenses={expensesList.length} deleteExpensesList={deleteExpensesList}/>} />
                 </Routes>
             </Router>
         </div>

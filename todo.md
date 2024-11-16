@@ -6,9 +6,9 @@
 ~~- Add dark theme~~
 
 ~~- Create settings page which includes:~~
-- Add formats for export:
-    - csv
-    - excel
+
+~~- Add formats for export~~
+
 - Add summary:
     - daily total bar chart
     - categories pie chart

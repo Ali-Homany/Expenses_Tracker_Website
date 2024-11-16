@@ -35,7 +35,7 @@ export default function ExpensesList({ expensesList, filters, setExpensesList, a
                 <AutoSizer>
                     {({ width, height }) => (
                         <List
-                            height={600}
+                            height={550}
                             width={width}
                             rowCount={ expenses.length }
                             rowHeight={ 50 }

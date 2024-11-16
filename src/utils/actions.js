@@ -1,3 +1,5 @@
+import * as XLSX from 'xlsx';
+
 function scroll_to_form() {
     const form = document.querySelector("form");
     if (form) {
@@ -53,22 +55,46 @@ function importData() {
     fileInput.click();
 }
 
-function downloadData() {
-    const data = JSON.parse(localStorage.getItem("data"));
+function downloadData(format) {
+    const allowed_formats = ['json', 'csv', 'xlsx'];
+    if (!allowed_formats.includes(format)) {
+        alert("Invalid format!");
+        return;
+    }
 
+    const data = JSON.parse(localStorage.getItem("data"));
     if (!data) {
-    alert("No data found in local storage!");
-    return;
+        alert("No data found in local storage!");
+        return;
     }
 
     const jsonData = JSON.stringify(data);
-    const blob = new Blob([jsonData], { type: "application/json" });
+
+    var blob = null;
+    if (format === "json") {
+        blob = new Blob([jsonData], { type: "application/json" });
+    } else if (format === "csv") {
+        const csvData = data.map(item => {
+            const { id, date, title, price, currency, category } = item;
+            return `${id},${date},${title},${price},${currency},${category}`;
+        }).join("\n");
+        blob = new Blob([csvData], { type: "text/csv" });
+    } else if (format === "xlsx") {
+        const workbook = XLSX.utils.book_new();
+        const worksheet = XLSX.utils.json_to_sheet(data);
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+        const xlsxBlob = new Blob([XLSX.write(workbook, { bookType: "xlsx", type: "array" })], 
+                                { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+        blob = xlsxBlob;
+    }
+
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = "expense_data.json";
-
+    link.download = `expense_data.${format}`;
     link.click();
-    URL.revokeObjectURL(link.href);
+    link.addEventListener('click', () => {
+        setTimeout(() => URL.revokeObjectURL(link.href), 100);
+    });
 }
 
 export { importData, downloadData, scroll_to_form };
