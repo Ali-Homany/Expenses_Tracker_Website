@@ -35,3 +35,12 @@ svg {
 .nav-btn:hover svg {
     fill: var(--dark-blue);
 }
+
+
+/* responsive */
+@media (max-width: 768px) {
+    .nav-btn {
+        top: 40px;
+        right: 20px;
+    }
+}

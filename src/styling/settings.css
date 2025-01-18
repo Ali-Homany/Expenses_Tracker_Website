@@ -60,3 +60,18 @@ button:hover {
     fill: var(--dark-blue);
 }
 
+
+
+
+/* responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 30px;
+    }
+    .controls {
+        width: 90%;
+    }
+    .controls * {
+        font-size: 18px;
+    }
+}
