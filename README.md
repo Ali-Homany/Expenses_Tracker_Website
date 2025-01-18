@@ -10,3 +10,11 @@ This is a CRUDS project using DOM local storage, built mainly for usage on deskt
 Note that data is locally saved on your device, it is totally safe to use this website, as no backend is included at all.
 
 You can find & use the website [here](https://homanydata.github.io/Expenses_Tracker_Website/)
+
+Below are some screenshots from the website:
+
+<p>
+    <img width="220" height="400" src="./assets/home.png">
+    <img width="220" height="400" src="./assets/data.png">
+    <img width="220" height="400" src="./assets/settings.png">
+</p>
