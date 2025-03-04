@@ -6,17 +6,6 @@ function scroll_to_form() {
         form.scrollIntoView({behavior:"smooth"});
     }
 }
-function getRandomColors(n) {
-    const shades = [];
-
-  for (let i = 0; i < n; i++) {
-    // Calculate the shade based on the index
-    const shade = `#${Math.floor((255 / n) * i).toString(16).padStart(2, '0')}0000`;
-    shades.push(shade);
-  }
-
-  return shades;
-}
 function importData() {
     const fileInput = document.createElement("input");
     fileInput.type = "file";
@@ -107,4 +96,4 @@ function downloadData(format) {
     });
 }
 
-export { importData, downloadData, scroll_to_form, getRandomColors };
+export { importData, downloadData, scroll_to_form };
