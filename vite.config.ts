@@ -6,10 +6,7 @@ import path from "path";
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
-    port: 8080,
-    allowedHosts: [
-      'c39d28179b4f.ngrok-free.app'
-    ]
+    port: 8080
   },
   plugins: [react()].filter(Boolean),
   resolve: {
@@ -17,4 +14,5 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  base: "/Expenses_Tracker_Website/"
 }));

@@ -16,7 +16,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner position="top-center" theme="dark" />
-      <BrowserRouter>
+      <BrowserRouter basename="/Expenses_Tracker_Website">
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/config" element={<ConfigPage />} />

@@ -279,7 +279,7 @@ export default function DataPage() {
         );
 
         if (!isValidExpenses) {
-          toast.error('Invalid JSON file schema for expenses. Please ensure expenses match the required structure (date format YYYY-MM-DD).');
+          toast.error('Invalid JSON file schema for expenses. Please ensure expenses match the required structure');
           return;
         }
 
@@ -322,7 +322,13 @@ export default function DataPage() {
 
   const confirmImport = () => {
     if (importedDataPayload) {
-      const { expenses: importedExpenses, accounts: importedAccounts, categories: importedCategories, monthlyExpenses: importedMonthlyExpenses, incomes: importedIncomes } = importedDataPayload;
+      const {
+        expenses: importedExpenses,
+        accounts: importedAccounts,
+        categories: importedCategories,
+        monthlyExpenses: importedMonthlyExpenses,
+        incomes: importedIncomes
+      } = importedDataPayload;
 
       let finalCategories: Category[] = data.categories;
       if (importedCategories && importedCategories.length > 0) {
@@ -376,14 +382,16 @@ export default function DataPage() {
       }));
 
       // map incomes to Income objects
-      const newIncomes: Income[] = importedIncomes.map(income => ({
-        id: generateId(),
-        amount: income.amount,
-        currency: income.currency,
-        date: income.date,
-        accountId: income.accountId
-      }))
-
+      let newIncomes: Income[] = [];
+      if (importedIncomes && importedIncomes.length > 0){
+        newIncomes = importedIncomes.map((income) => ({
+            id: generateId(),
+            amount: income.amount,
+            currency: income.currency,
+            date: income.date,
+            accountId: income.accountId
+          }))
+        }
       setData((prev) => ({
         ...prev,
         categories: finalCategories,

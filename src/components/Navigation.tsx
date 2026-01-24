@@ -15,11 +15,11 @@ export function Navigation() {
         <NavLink to="/" className={linkClass}>
           <Home className="w-8 h-full p-1" />
         </NavLink>
-        <NavLink to="/data" className={linkClass}>
-          <Database className="w-8 h-full p-1" />
-        </NavLink>
         <NavLink to="/accounts" className={linkClass}> {/* New NavLink for Accounts */}
           <PiggyBank className="w-8 h-full p-1" />
+        </NavLink>
+        <NavLink to="/data" className={linkClass}>
+          <Database className="w-8 h-full p-1" />
         </NavLink>
         <NavLink to="/config" className={linkClass}>
           <Settings className="w-8 h-full p-1" />
