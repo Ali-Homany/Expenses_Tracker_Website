@@ -435,9 +435,21 @@ export default function AccountPage() {
       return;
     }
 
+    console.log(data.accounts);
+    console.log(conversionDestinationAccountId)
     setData((prev) => ({
       ...prev,
       accounts: prev.accounts.map((acc) => {
+        if (acc.id === conversionSourceAccountId && acc.id === conversionDestinationAccountId) {
+          return {
+            ...acc,
+            balances: {
+              ...acc.balances,
+              [conversionSourceCurrency]: (acc.balances[conversionSourceCurrency] || 0) - quantity,
+              [conversionDestinationCurrency]: (acc.balances[conversionDestinationCurrency] || 0) + convertedAmount,
+            }
+          }
+        }
         if (acc.id === conversionSourceAccountId) {
           return {
             ...acc,
